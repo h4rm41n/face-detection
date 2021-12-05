@@ -11,8 +11,10 @@ classes = []
 with open('assets/coco.names', 'r') as f:
     classes = [line.strip() for line in f.readlines()]
 
+# print(classes)
+
 layer_name = net.getLayerNames()
-output_layers = [layer_name[i[0]-1] for i in net.getUnconnectedOutLayers()]
+output_layers = [layer_name[i-1] for i in net.getUnconnectedOutLayers()]
 warna = np.random.uniform(0, 255, size=(len(classes), 2))
 
 cap = cv2.VideoCapture(0)

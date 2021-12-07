@@ -46,7 +46,7 @@ while True:
         id, confidence = face_recognizer.predict(
             gray[y:y+h, x:x+w]
         )
-        if confidence <= 50:
+        if confidence >= 50:
             name_id = names[id]
             confidence_text = f'{round(100 - confidence)}%'
         else:

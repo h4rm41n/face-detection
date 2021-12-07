@@ -17,7 +17,8 @@ layer_name = net.getLayerNames()
 output_layers = [layer_name[i-1] for i in net.getUnconnectedOutLayers()]
 warna = np.random.uniform(0, 255, size=(len(classes), 2))
 
-cap = cv2.VideoCapture(0)
+cap = cv2.VideoCapture('assets/walking.mp4')
+# cap = cv2.VideoCapture(0)
 
 starting_time = time.time()
 frame_id = 0
@@ -62,7 +63,7 @@ while True:
             x, y, w, h = boxes[i]
             label = classes[class_ids[i]]
             confidence = confidences[i]
-            color = warna[i]
+            color = warna[class_ids[i]]
             cv2.rectangle(frame, (x, y), (x+w, y+h), color, 2)
             cv2.putText(frame, label, (x, y+30), cv2.FONT_ITALIC, 1, color, 1)
 
